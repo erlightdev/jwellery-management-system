@@ -3,7 +3,7 @@ import type * as React from "react";
 
 function Label({ className, ...props }: React.ComponentProps<"label">) {
 	return (
-		// biome-ignore lint/a11y/noLabelWithoutControl: This primitive receives htmlFor from callers.
+		// biome-ignore lint/a11y/noLabelWithoutControl: shadcn label is a primitive; consumers provide htmlFor or nest controls.
 		<label
 			data-slot="label"
 			className={cn(
