@@ -1,0 +1,24 @@
+{
+  "name": "@jewellery-management-system/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@jewellery-management-system/db": "*",
+    "@jewellery-management-system/env": "*",
+    "better-auth": "1.5.5",
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@jewellery-management-system/config": "*",
+    "typescript": "^6"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "jewellery-management-system",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:web": "turbo -F web dev",
+    "dev:server": "turbo -F server dev",
+    "db:push": "turbo -F @jewellery-management-system/db db:push",
+    "db:studio": "turbo -F @jewellery-management-system/db db:studio",
+    "db:generate": "turbo -F @jewellery-management-system/db db:generate",
+    "db:migrate": "turbo -F @jewellery-management-system/db db:migrate",
+    "db:start": "turbo -F @jewellery-management-system/db db:start",
+    "db:watch": "turbo -F @jewellery-management-system/db db:watch",
+    "db:stop": "turbo -F @jewellery-management-system/db db:stop",
+    "db:down": "turbo -F @jewellery-management-system/db db:down",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@jewellery-management-system/env": "*",
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@jewellery-management-system/config": "*",
+    "@types/node": "^22.13.14",
+    "turbo": "^2.8.12",
+    "typescript": "^6"
+  },
+  "packageManager": "npm@11.4.2"
+}
