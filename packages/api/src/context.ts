@@ -1,4 +1,5 @@
 import { auth } from "@jewellery-management-system/auth";
+import prisma from "@jewellery-management-system/db";
 import type { CreateExpressContextOptions } from "@trpc/server/adapters/express";
 import { fromNodeHeaders } from "better-auth/node";
 
@@ -8,6 +9,7 @@ export async function createContext(opts: CreateExpressContextOptions) {
 	});
 	return {
 		auth: null,
+		prisma,
 		session,
 	};
 }

@@ -4,6 +4,7 @@ import {
 	publicProcedure,
 	router,
 } from "../index";
+import { jewelleryRouter } from "./jewellery";
 
 export const appRouter = router({
 	healthCheck: publicProcedure.query(() => {
@@ -20,5 +21,6 @@ export const appRouter = router({
 			message: "This is admin-only",
 		};
 	}),
+	jewellery: jewelleryRouter,
 });
 export type AppRouter = typeof appRouter;

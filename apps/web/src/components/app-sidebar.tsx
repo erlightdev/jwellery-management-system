@@ -22,18 +22,24 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarRail,
-	SidebarSeparator,
 } from "@jewellery-management-system/ui/components/sidebar";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
+	BarChart3,
+	CalendarDays,
 	ChevronsUpDown,
 	Diamond,
 	Home,
 	LayoutDashboard,
 	LogOut,
+	Package,
+	Receipt,
 	Settings,
 	Shield,
+	ShoppingBag,
 	Sparkles,
+	Truck,
+	Users,
 } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 
@@ -48,6 +54,14 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
 const navItems = [
 	{ to: "/" as const, label: "Home", icon: Home },
 	{ to: "/dashboard" as const, label: "Dashboard", icon: LayoutDashboard },
+	{ to: "/products" as const, label: "Products", icon: Package },
+	{ to: "/inventory" as const, label: "Inventory", icon: Sparkles },
+	{ to: "/sales" as const, label: "Sales Billing", icon: Receipt },
+	{ to: "/customers" as const, label: "Customers", icon: Users },
+	{ to: "/suppliers" as const, label: "Suppliers", icon: Truck },
+	{ to: "/purchases" as const, label: "Purchases", icon: ShoppingBag },
+	{ to: "/reports" as const, label: "Reports", icon: BarChart3 },
+	{ to: "/calendar" as const, label: "Calendar", icon: CalendarDays },
 	{ to: "/settings" as const, label: "Profile Settings", icon: Settings },
 ];
 
@@ -108,20 +122,6 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
 								</SidebarMenuItem>
 							);
 						})}
-					</SidebarMenu>
-				</SidebarGroup>
-
-				<SidebarSeparator />
-
-				<SidebarGroup>
-					<SidebarGroupLabel>Workspace</SidebarGroupLabel>
-					<SidebarMenu>
-						<SidebarMenuItem>
-							<SidebarMenuButton tooltip="Catalog">
-								<Sparkles />
-								<span>Catalog</span>
-							</SidebarMenuButton>
-						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarContent>
