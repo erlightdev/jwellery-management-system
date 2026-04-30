@@ -3,6 +3,7 @@ import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { DashboardShell } from "@/components/dashboard-shell";
 import { authClient } from "@/lib/auth-client";
 
 type AdminUser = {
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/admin")({
 });
 
 function RouteComponent() {
+	const { session } = Route.useRouteContext();
 	const [users, setUsers] = useState<AdminUser[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -75,65 +77,68 @@ function RouteComponent() {
 	}
 
 	return (
-		<main className="mx-auto w-full max-w-5xl px-4 py-8">
-			<div className="mb-6 flex items-center justify-between gap-4">
-				<div>
-					<h1 className="font-bold text-3xl">User Management</h1>
-					<p className="text-muted-foreground">
-						Manage application roles and account status.
-					</p>
-				</div>
+		<DashboardShell
+			title="User Management"
+			description="Manage application roles and account status"
+			user={session.data?.user as AdminUser}
+			actions={
 				<Button variant="outline" onClick={loadUsers} disabled={isLoading}>
 					Refresh
 				</Button>
-			</div>
-
-			<div className="overflow-hidden rounded-lg border">
-				<table className="w-full border-collapse text-sm">
-					<thead className="bg-muted/50 text-left">
-						<tr>
-							<th className="p-3 font-medium">User</th>
-							<th className="p-3 font-medium">Verified</th>
-							<th className="p-3 font-medium">Role</th>
-							<th className="p-3 text-right font-medium">Actions</th>
-						</tr>
-					</thead>
-					<tbody>
-						{isLoading ? (
+			}
+		>
+			<div className="mx-auto w-full max-w-5xl">
+				<div className="overflow-hidden rounded-lg border">
+					<table className="w-full border-collapse text-sm">
+						<thead className="bg-muted/50 text-left">
 							<tr>
-								<td className="p-4 text-center" colSpan={4}>
-									Loading users...
-								</td>
+								<th className="p-3 font-medium">User</th>
+								<th className="p-3 font-medium">Verified</th>
+								<th className="p-3 font-medium">Role</th>
+								<th className="p-3 text-right font-medium">Actions</th>
 							</tr>
-						) : (
-							users.map((user) => {
-								const role = user.role ?? "user";
-								const nextRole = role === "admin" ? "user" : "admin";
+						</thead>
+						<tbody>
+							{isLoading ? (
+								<tr>
+									<td className="p-4 text-center" colSpan={4}>
+										Loading users...
+									</td>
+								</tr>
+							) : (
+								users.map((user) => {
+									const role = user.role ?? "user";
+									const nextRole = role === "admin" ? "user" : "admin";
 
-								return (
-									<tr key={user.id} className="border-t">
-										<td className="p-3">
-											<div className="font-medium">{user.name}</div>
-											<div className="text-muted-foreground">{user.email}</div>
-										</td>
-										<td className="p-3">{user.emailVerified ? "Yes" : "No"}</td>
-										<td className="p-3 capitalize">{role}</td>
-										<td className="p-3 text-right">
-											<Button
-												type="button"
-												variant="outline"
-												onClick={() => setRole(user.id, nextRole)}
-											>
-												Make {nextRole}
-											</Button>
-										</td>
-									</tr>
-								);
-							})
-						)}
-					</tbody>
-				</table>
+									return (
+										<tr key={user.id} className="border-t">
+											<td className="p-3">
+												<div className="font-medium">{user.name}</div>
+												<div className="text-muted-foreground">
+													{user.email}
+												</div>
+											</td>
+											<td className="p-3">
+												{user.emailVerified ? "Yes" : "No"}
+											</td>
+											<td className="p-3 capitalize">{role}</td>
+											<td className="p-3 text-right">
+												<Button
+													type="button"
+													variant="outline"
+													onClick={() => setRole(user.id, nextRole)}
+												>
+													Make {nextRole}
+												</Button>
+											</td>
+										</tr>
+									);
+								})
+							)}
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</main>
+		</DashboardShell>
 	);
 }
