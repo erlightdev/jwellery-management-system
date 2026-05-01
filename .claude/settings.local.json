@@ -16,7 +16,8 @@
       "Bash(node --import tsx/esm -e ' *)",
       "Bash(npx tsx *)",
       "Bash(echo \"Exit: $?\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(npx vite *)"
     ]
   }
 }

@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TryOnRouteImport } from './routes/try-on'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SuppliersRouteImport } from './routes/suppliers'
 import { Route as StonesRouteImport } from './routes/stones'
@@ -31,6 +32,11 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TryOnRoute = TryOnRouteImport.update({
+  id: '/try-on',
+  path: '/try-on',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
+  '/try-on': typeof TryOnRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
+  '/try-on': typeof TryOnRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
+  '/try-on': typeof TryOnRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/stones'
     | '/suppliers'
     | '/terms'
+    | '/try-on'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/stones'
     | '/suppliers'
     | '/terms'
+    | '/try-on'
   id:
     | '__root__'
     | '/'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/stones'
     | '/suppliers'
     | '/terms'
+    | '/try-on'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -301,10 +313,18 @@ export interface RootRouteChildren {
   StonesRoute: typeof StonesRoute
   SuppliersRoute: typeof SuppliersRoute
   TermsRoute: typeof TermsRoute
+  TryOnRoute: typeof TryOnRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/try-on': {
+      id: '/try-on'
+      path: '/try-on'
+      fullPath: '/try-on'
+      preLoaderRoute: typeof TryOnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   StonesRoute: StonesRoute,
   SuppliersRoute: SuppliersRoute,
   TermsRoute: TermsRoute,
+  TryOnRoute: TryOnRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

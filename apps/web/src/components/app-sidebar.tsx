@@ -34,6 +34,7 @@ import {
 	LogOut,
 	Package,
 	Receipt,
+	ScanFace,
 	Settings,
 	Shield,
 	ShoppingBag,
@@ -62,6 +63,7 @@ const navItems = [
 	{ to: "/purchases" as const, label: "Purchases", icon: ShoppingBag },
 	{ to: "/reports" as const, label: "Reports", icon: BarChart3 },
 	{ to: "/calendar" as const, label: "Calendar", icon: CalendarDays },
+	{ to: "/try-on" as const,  label: "Try On",   icon: ScanFace },
 	{ to: "/settings" as const, label: "Profile Settings", icon: Settings },
 ];
 
