@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VirtualTryonRouteImport } from './routes/virtual-tryon'
 import { Route as TryOnRouteImport } from './routes/try-on'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SuppliersRouteImport } from './routes/suppliers'
@@ -32,6 +33,11 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VirtualTryonRoute = VirtualTryonRouteImport.update({
+  id: '/virtual-tryon',
+  path: '/virtual-tryon',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TryOnRoute = TryOnRouteImport.update({
   id: '/try-on',
   path: '/try-on',
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
   '/try-on': typeof TryOnRoute
+  '/virtual-tryon': typeof VirtualTryonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -190,6 +197,7 @@ export interface FileRoutesByTo {
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
   '/try-on': typeof TryOnRoute
+  '/virtual-tryon': typeof VirtualTryonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/suppliers': typeof SuppliersRoute
   '/terms': typeof TermsRoute
   '/try-on': typeof TryOnRoute
+  '/virtual-tryon': typeof VirtualTryonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -241,6 +250,7 @@ export interface FileRouteTypes {
     | '/suppliers'
     | '/terms'
     | '/try-on'
+    | '/virtual-tryon'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/suppliers'
     | '/terms'
     | '/try-on'
+    | '/virtual-tryon'
   id:
     | '__root__'
     | '/'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/suppliers'
     | '/terms'
     | '/try-on'
+    | '/virtual-tryon'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -314,10 +326,18 @@ export interface RootRouteChildren {
   SuppliersRoute: typeof SuppliersRoute
   TermsRoute: typeof TermsRoute
   TryOnRoute: typeof TryOnRoute
+  VirtualTryonRoute: typeof VirtualTryonRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/virtual-tryon': {
+      id: '/virtual-tryon'
+      path: '/virtual-tryon'
+      fullPath: '/virtual-tryon'
+      preLoaderRoute: typeof VirtualTryonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/try-on': {
       id: '/try-on'
       path: '/try-on'
@@ -498,6 +518,7 @@ const rootRouteChildren: RootRouteChildren = {
   SuppliersRoute: SuppliersRoute,
   TermsRoute: TermsRoute,
   TryOnRoute: TryOnRoute,
+  VirtualTryonRoute: VirtualTryonRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

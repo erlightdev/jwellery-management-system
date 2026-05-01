@@ -8,6 +8,7 @@ const cols = [
 			{ to: "/design", label: "Design" },
 			{ to: "/process", label: "Process" },
 			{ to: "/rates", label: "Rates" },
+			{ to: "/virtual-tryon", label: "Virtual Try-On" },
 		],
 	},
 	{

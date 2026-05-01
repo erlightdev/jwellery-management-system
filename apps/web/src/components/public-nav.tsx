@@ -8,6 +8,7 @@ const navLinks = [
 	{ to: "/design" as const, label: "Design" },
 	{ to: "/process" as const, label: "Process" },
 	{ to: "/rates" as const, label: "Rates" },
+	{ to: "/virtual-tryon" as const, label: "Try On" },
 ];
 
 function ThemeToggle() {
@@ -69,15 +70,25 @@ export function PublicNav({ pillClassName, className }: PublicNavProps) {
 
 				{/* Nav links — hidden on mobile */}
 				<div className="hidden items-center gap-1 md:flex">
-					{navLinks.map((link) => (
-						<Link
-							key={link.to}
-							to={link.to}
-							className="rounded-full px-3 py-1.5 text-[12px] text-[#6B6B67] transition-colors duration-200 hover:bg-[#F0F0EB] hover:text-[#0D0D0B] dark:text-[#888882] dark:hover:bg-[#1E1E1C] dark:hover:text-[#F0F0EB]"
-						>
-							{link.label}
-						</Link>
-					))}
+					{navLinks.map((link) =>
+						link.to === "/virtual-tryon" ? (
+							<Link
+								key={link.to}
+								to={link.to}
+								className="rounded-full bg-[#C4A84F]/10 px-3 py-1.5 text-[12px] text-[#C4A84F] transition-colors duration-200 hover:bg-[#C4A84F]/20"
+							>
+								✦ {link.label}
+							</Link>
+						) : (
+							<Link
+								key={link.to}
+								to={link.to}
+								className="rounded-full px-3 py-1.5 text-[12px] text-[#6B6B67] transition-colors duration-200 hover:bg-[#F0F0EB] hover:text-[#0D0D0B] dark:text-[#888882] dark:hover:bg-[#1E1E1C] dark:hover:text-[#F0F0EB]"
+							>
+								{link.label}
+							</Link>
+						)
+					)}
 				</div>
 
 				<div className="mx-3 hidden h-3 w-px bg-[#E0E0DB] dark:bg-[#2A2A28] md:block" />
