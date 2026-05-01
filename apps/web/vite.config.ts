@@ -10,6 +10,10 @@ export default defineConfig({
 	resolve: {
 		tsconfigPaths: true,
 	},
+	optimizeDeps: {
+		// @imgly/background-removal loads its own WASM workers at runtime — pre-bundling breaks that
+		exclude: ["@imgly/background-removal"],
+	},
 	plugins: [
 		tailwindcss(),
 		tanstackRouter({
