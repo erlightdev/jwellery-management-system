@@ -6,6 +6,7 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import express from "express";
+import { startRateScheduler } from "./lib/rate-scheduler.js";
 
 const app = express();
 
@@ -36,4 +37,5 @@ app.get("/", (_req, res) => {
 
 app.listen(3000, () => {
 	console.log("Server is running on http://localhost:3000");
+	startRateScheduler();
 });

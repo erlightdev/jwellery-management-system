@@ -9,23 +9,46 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SuppliersRouteImport } from './routes/suppliers'
+import { Route as StonesRouteImport } from './routes/stones'
+import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as RatesRouteImport } from './routes/rates'
 import { Route as PurchasesRouteImport } from './routes/purchases'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ProcessRouteImport } from './routes/process'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MetalsRouteImport } from './routes/metals'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as InventoryRouteImport } from './routes/inventory'
+import { Route as DesignRouteImport } from './routes/design'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CustomersRouteImport } from './routes/customers'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuppliersRoute = SuppliersRouteImport.update({
   id: '/suppliers',
   path: '/suppliers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StonesRoute = StonesRouteImport.update({
+  id: '/stones',
+  path: '/stones',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -43,6 +66,11 @@ const ReportsRoute = ReportsRouteImport.update({
   path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RatesRoute = RatesRouteImport.update({
+  id: '/rates',
+  path: '/rates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PurchasesRoute = PurchasesRouteImport.update({
   id: '/purchases',
   path: '/purchases',
@@ -53,6 +81,21 @@ const ProductsRoute = ProductsRouteImport.update({
   path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProcessRoute = ProcessRouteImport.update({
+  id: '/process',
+  path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetalsRoute = MetalsRouteImport.update({
+  id: '/metals',
+  path: '/metals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -61,6 +104,11 @@ const LoginRoute = LoginRouteImport.update({
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -95,14 +143,22 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
   '/inventory': typeof InventoryRoute
   '/login': typeof LoginRoute
+  '/metals': typeof MetalsRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/purchases': typeof PurchasesRoute
+  '/rates': typeof RatesRoute
   '/reports': typeof ReportsRoute
   '/sales': typeof SalesRoute
   '/settings': typeof SettingsRoute
+  '/shop': typeof ShopRoute
+  '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -110,14 +166,22 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
   '/inventory': typeof InventoryRoute
   '/login': typeof LoginRoute
+  '/metals': typeof MetalsRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/purchases': typeof PurchasesRoute
+  '/rates': typeof RatesRoute
   '/reports': typeof ReportsRoute
   '/sales': typeof SalesRoute
   '/settings': typeof SettingsRoute
+  '/shop': typeof ShopRoute
+  '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -126,14 +190,22 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/customers': typeof CustomersRoute
   '/dashboard': typeof DashboardRoute
+  '/design': typeof DesignRoute
   '/inventory': typeof InventoryRoute
   '/login': typeof LoginRoute
+  '/metals': typeof MetalsRoute
+  '/privacy': typeof PrivacyRoute
+  '/process': typeof ProcessRoute
   '/products': typeof ProductsRoute
   '/purchases': typeof PurchasesRoute
+  '/rates': typeof RatesRoute
   '/reports': typeof ReportsRoute
   '/sales': typeof SalesRoute
   '/settings': typeof SettingsRoute
+  '/shop': typeof ShopRoute
+  '/stones': typeof StonesRoute
   '/suppliers': typeof SuppliersRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -143,14 +215,22 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/customers'
     | '/dashboard'
+    | '/design'
     | '/inventory'
     | '/login'
+    | '/metals'
+    | '/privacy'
+    | '/process'
     | '/products'
     | '/purchases'
+    | '/rates'
     | '/reports'
     | '/sales'
     | '/settings'
+    | '/shop'
+    | '/stones'
     | '/suppliers'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -158,14 +238,22 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/customers'
     | '/dashboard'
+    | '/design'
     | '/inventory'
     | '/login'
+    | '/metals'
+    | '/privacy'
+    | '/process'
     | '/products'
     | '/purchases'
+    | '/rates'
     | '/reports'
     | '/sales'
     | '/settings'
+    | '/shop'
+    | '/stones'
     | '/suppliers'
+    | '/terms'
   id:
     | '__root__'
     | '/'
@@ -173,14 +261,22 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/customers'
     | '/dashboard'
+    | '/design'
     | '/inventory'
     | '/login'
+    | '/metals'
+    | '/privacy'
+    | '/process'
     | '/products'
     | '/purchases'
+    | '/rates'
     | '/reports'
     | '/sales'
     | '/settings'
+    | '/shop'
+    | '/stones'
     | '/suppliers'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -189,23 +285,52 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   CustomersRoute: typeof CustomersRoute
   DashboardRoute: typeof DashboardRoute
+  DesignRoute: typeof DesignRoute
   InventoryRoute: typeof InventoryRoute
   LoginRoute: typeof LoginRoute
+  MetalsRoute: typeof MetalsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProcessRoute: typeof ProcessRoute
   ProductsRoute: typeof ProductsRoute
   PurchasesRoute: typeof PurchasesRoute
+  RatesRoute: typeof RatesRoute
   ReportsRoute: typeof ReportsRoute
   SalesRoute: typeof SalesRoute
   SettingsRoute: typeof SettingsRoute
+  ShopRoute: typeof ShopRoute
+  StonesRoute: typeof StonesRoute
   SuppliersRoute: typeof SuppliersRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/suppliers': {
       id: '/suppliers'
       path: '/suppliers'
       fullPath: '/suppliers'
       preLoaderRoute: typeof SuppliersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/stones': {
+      id: '/stones'
+      path: '/stones'
+      fullPath: '/stones'
+      preLoaderRoute: typeof StonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -229,6 +354,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rates': {
+      id: '/rates'
+      path: '/rates'
+      fullPath: '/rates'
+      preLoaderRoute: typeof RatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/purchases': {
       id: '/purchases'
       path: '/purchases'
@@ -243,6 +375,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/process': {
+      id: '/process'
+      path: '/process'
+      fullPath: '/process'
+      preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metals': {
+      id: '/metals'
+      path: '/metals'
+      fullPath: '/metals'
+      preLoaderRoute: typeof MetalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -255,6 +408,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory'
       fullPath: '/inventory'
       preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -301,14 +461,22 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   CustomersRoute: CustomersRoute,
   DashboardRoute: DashboardRoute,
+  DesignRoute: DesignRoute,
   InventoryRoute: InventoryRoute,
   LoginRoute: LoginRoute,
+  MetalsRoute: MetalsRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProcessRoute: ProcessRoute,
   ProductsRoute: ProductsRoute,
   PurchasesRoute: PurchasesRoute,
+  RatesRoute: RatesRoute,
   ReportsRoute: ReportsRoute,
   SalesRoute: SalesRoute,
   SettingsRoute: SettingsRoute,
+  ShopRoute: ShopRoute,
+  StonesRoute: StonesRoute,
   SuppliersRoute: SuppliersRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

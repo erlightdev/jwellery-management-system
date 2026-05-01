@@ -1,4 +1,7 @@
 import type { AppRouter } from "@jewellery-management-system/api/routers/index";
+import type { inferRouterOutputs } from "@trpc/server";
+
+export type RouterOutputs = inferRouterOutputs<AppRouter>;
 import { env } from "@jewellery-management-system/env/web";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 import { createTRPCClient, httpBatchLink } from "@trpc/client";

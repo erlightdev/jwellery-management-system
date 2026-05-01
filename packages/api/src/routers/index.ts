@@ -5,6 +5,7 @@ import {
 	router,
 } from "../index";
 import { jewelleryRouter } from "./jewellery";
+import { metalRatesRouter } from "./metal-rates";
 
 export const appRouter = router({
 	healthCheck: publicProcedure.query(() => {
@@ -22,5 +23,6 @@ export const appRouter = router({
 		};
 	}),
 	jewellery: jewelleryRouter,
+	metalRates: metalRatesRouter,
 });
 export type AppRouter = typeof appRouter;

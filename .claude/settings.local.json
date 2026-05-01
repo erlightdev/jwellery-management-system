@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \"const pkg = require\\('./apps/web/package.json'\\); console.log\\(pkg.dependencies.gsap\\)\")",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const d=require\\('/dev/stdin'\\);console.log\\('version:',d.version,'types:',d.types||d.typings\\)\")",
+      "Bash(curl -s \"https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json\")",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\); const j=JSON.parse\\(d\\); console.log\\('date:', j.date\\); console.log\\('xau:', j.usd.xau\\); console.log\\('xag:', j.usd.xag\\); console.log\\('npr:', j.usd.npr\\);\")",
+      "Bash(node -p \"const j=require\\('/tmp/fawaz.json'\\); JSON.stringify\\({date:j.date,xau:j.usd.xau,xag:j.usd.xag,npr:j.usd.npr}\\)\")",
+      "WebFetch(domain:www.hamropatro.com)",
+      "WebFetch(domain:hamropatro.com)",
+      "Bash(npx prisma *)",
+      "Bash(node -e \"const p=require\\('./packages/api/package.json'\\);console.log\\(p.dependencies['node-html-parser']\\)\")",
+      "Bash(xargs grep *)",
+      "Bash(npx tsx -e ' *)",
+      "Bash(node --import tsx/esm -e ' *)",
+      "Bash(npx tsx *)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

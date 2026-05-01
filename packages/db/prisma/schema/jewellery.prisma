@@ -1,3 +1,21 @@
+// Stores daily Nepal gold/silver rates scraped from hamropatro.com
+model MetalRate {
+  id                 String   @id @default(cuid())
+  date               DateTime @db.Date
+  goldHallmarkTola   Decimal? @db.Decimal(12, 2)
+  goldTajabiTola     Decimal? @db.Decimal(12, 2)
+  silverTola         Decimal? @db.Decimal(12, 2)
+  goldHallmark10g    Decimal? @db.Decimal(12, 2)
+  goldTajabi10g      Decimal? @db.Decimal(12, 2)
+  silver10g          Decimal? @db.Decimal(12, 2)
+  source             String   @default("hamropatro")
+  scrapedAt          DateTime @default(now())
+
+  @@unique([date])
+  @@index([date])
+  @@map("metal_rate")
+}
+
 model Customer {
   id        String   @id @default(cuid())
   name      String
